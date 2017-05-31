@@ -1,0 +1,9 @@
+{
+  "name": "redux-async-sample",
+  "version": "0.1.0",
+  "description": "Redux async study",
+  "main": "index.js",
+  "repository": "https://github.com/nabezokodaikon/redux-async-sample.git",
+  "author": "nabezokodaikon <nabezoko.daikon@gmail.com>",
+  "license": "MIT"
+}
