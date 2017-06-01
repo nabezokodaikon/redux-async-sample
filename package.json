@@ -7,6 +7,7 @@
   "author": "nabezokodaikon <nabezoko.daikon@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "redux": "^3.6.0"
   },
   "devDependencies": {
