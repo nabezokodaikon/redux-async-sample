@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "https://github.com/nabezokodaikon/redux-async-sample.git",
   "author": "nabezokodaikon <nabezoko.daikon@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "redux": "^3.6.0"
+  }
 }
