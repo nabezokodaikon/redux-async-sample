@@ -2,7 +2,7 @@
   "name": "redux-async-sample",
   "version": "0.1.0",
   "description": "Redux async study",
-  "main": "index.js",
+  "main": "build/main.js",
   "repository": "https://github.com/nabezokodaikon/redux-async-sample.git",
   "author": "nabezokodaikon <nabezoko.daikon@gmail.com>",
   "license": "MIT",
@@ -19,11 +19,14 @@
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.5.1"
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
+    "electron": "^1.6.10"
   },
   "babel": {
     "presets": [
-      "env"
+      "env",
+      "react"
     ]
   },
   "scripts": {

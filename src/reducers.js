@@ -1,12 +1,10 @@
-"use strict";
-
 import { combineReducers } from "redux";
 import {
   SELECT_SUBREDDIT,
   INVALIDATE_SUBREDDIT,
   REQUEST_POSTS,
   RECEIVE_POSTS
-} from "../actions/actions";
+} from "./actions";
 
 function selectedSubreddit(state = "reactjs", action) {
   switch (action.type) {
@@ -55,7 +53,7 @@ function postsBySubreddit(state = {}, action) {
       // is equivalent to this:
       // let nextState = {};
       // nextState[action.subreddit] = posts(state[action.subreddit], action);
-      return Object.assign({}, state, nextState);
+      // return Object.assign({}, state, nextState);
     default:
       return state;
   }

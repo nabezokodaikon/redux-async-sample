@@ -1,31 +1,12 @@
-"use strict";
+// "use strict";
 
-import thunkMiddleware from "redux-thunk";
-import createLogger from "redux-logger";
-import {
-  createStore,
-  applyMiddleware
-} from "redux";
-import {
-  selectSubreddit,
-  fetchPosts
-} from "./actions/actions";
-import rootReducer from "./reducers/reducers";
+import "babel-polyfill";
 
-const loggerMiddleware = createLogger();
+import React from "react";
+import { render } from "react-dom";
+import Root from "../build/containers/Root"
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(
-    thunkMiddleware,
-    loggerMiddleware
-  )
-);
-
-store.dispatch(selectSubreddit("reactjs"));
-store.dispatch(fetchPosts("reactjs")).then(() =>
-  console.log(store.getState())
-);
-store.dispatch(fetchPostsIfNeeded("reactjs")).then(() =>
-  console.log(store.getState())
+render(
+  <Root />,
+  document.getElementById("root")
 );
