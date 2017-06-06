@@ -29,6 +29,12 @@ module.exports = {
     extensions: [".js", ".jsx"]
   },
 
+  devServer: {
+    host: "localhost",
+    port: 3000,
+    contentBase: path.resolve(__dirname, "dist")
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       chunks: ["main"],
