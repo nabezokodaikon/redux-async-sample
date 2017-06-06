@@ -4,7 +4,8 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 
 module.exports = {
   entry: {
-    main: "./src/main/index.js"
+    main: "./src/main/index.js",
+    sub: "./src/sub/index.js"
   },
 
   output: {
@@ -30,7 +31,16 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
+      chunks: ["main"],
+      filename: "main.html",
       template: "./src/main/index.html",
+      inject: "body"
+    }),
+
+    new HtmlWebpackPlugin({
+      chunks: ["sub"],
+      filename: "sub.html",
+      template: "./src/sub/index.html",
       inject: "body"
     })
   ]
