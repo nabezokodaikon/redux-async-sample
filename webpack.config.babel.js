@@ -36,6 +36,8 @@ module.exports = {
     extensions: [".js", ".jsx"]
   },
 
+  devtool: "inline-source-map",
+
   devServer: {
     host: "localhost",
     port: 3000,
