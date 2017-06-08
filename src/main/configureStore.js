@@ -1,4 +1,4 @@
-
+import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   createStore,
   applyMiddleware
@@ -13,9 +13,11 @@ export default function configureStore(preloadedState) {
   return createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(
-      thunkMiddleware,
-      loggerMiddleware
+    composeWithDevTools(
+      applyMiddleware(
+        thunkMiddleware,
+        loggerMiddleware,
+      )
     )
   );
 }
