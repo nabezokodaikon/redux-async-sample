@@ -35,6 +35,7 @@ function getReposByUser(state = {
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
+        lastUpdated: action.lastUpdated,
         errorMessage: action.errorMessage,
         repos: action.repos
       });
