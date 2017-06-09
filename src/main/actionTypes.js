@@ -1,4 +1,4 @@
-export const INPUT_USER_NAME = "INPUT_USER_NAME"; 
+export const INPUT_USER = "INPUT_USER"; 
 export const REQUEST_REPOS = "REQUEST_REPOS";
 export const RECEIVE_REPOS = "RECEIVE_REPOS";
 export const INVALIDATE_RESULT = "INVALIDATE_RESULT";
