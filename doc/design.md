@@ -3,30 +3,39 @@
 ### Command
 ```
 $ curl https://api.github.com/users/nabezokodaikon/repos
+
+res.status
+Sucess: 200
+Failed: 404
+
+res.statusText
+Sucess: "OK"
+Failed: "Not Found"
 ```
 
-### Sucess
+### Sample code
 ```
-[
-  {
-    "id": 61000608,
-    "name": "1password-docker",
-    "html_url": "https://github.com/nabezokodaikon/1password-docker",
-  },
-  {
-    "id": 17136214,
-    "name": "AppDomainSample",
-    "html_url": "https://github.com/nabezokodaikon/AppDomainSample",
+var github = require('octonode');
+var client = github.client();
+var ghsearch = client.search();
+ghsearch.repos({
+  q: 'user:nabezokodaikon',
+  sort: 'created',
+  order: 'asc'
+}, function(err, data, headers) {
+  if (err !== null) {
+    console.log(`statusCode: ${err.statusCode}, message: ${err.message}`);
+    return;
   }
-]
-```
 
-### Failed
-```
-{
-  "message": "Not Found",
-  "documentation_url": "https://developer.github.com/v3"
-}
+  if (headers.status !== "200 OK") {
+    console.log(headers.status);
+    return;
+  }
+
+  const repos = data.items.map(a => { return { name: a.name, url: a.html_url }; });
+  console.log(repos);
+});
 ```
 
 
@@ -36,16 +45,14 @@ $ curl https://api.github.com/users/nabezokodaikon/repos
   lastUpdated: 1439478405547  // new Date(lastUpdated).toLocaleTimeString()
   isFetching: false,
   errorMessage: "Not Found",  // Error only.
-  items: [                    // Sucess only.
+  repos: [                    // Sucess only.
     {
-      "id": 61000608,
       "name": "1password-docker",
-      "html_url": "https://github.com/nabezokodaikon/1password-docker",
+      "url": "https://github.com/nabezokodaikon/1password-docker",
     },
     {
-      "id": 17136214,
       "name": "AppDomainSample",
-      "html_url": "https://github.com/nabezokodaikon/AppDomainSample",
+      "url": "https://github.com/nabezokodaikon/AppDomainSample",
     }
   ]
 }
