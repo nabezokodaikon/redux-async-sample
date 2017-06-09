@@ -18,6 +18,7 @@ function inputedUser(state = "", action) {
 function getReposByUser(state = {
   isFetching: false,
   didInvalidate: false,
+  lastUpdated: "",
   errorMessage: "",
   repos: []
 }, action) {
