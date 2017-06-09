@@ -26,19 +26,9 @@ function requestRepos() {
 }
 
 function receiveRepos(res) {
-  const lastUpdated = new Date(Date.now()).toLocaleTimeString();
-  const errorMessage = (res.err !== null) ? res.err.message : "";
-  const repos = res.data.items.map(a => {
-    return {
-      name: a.name,
-      url: a.html_url
-    }; 
-  });
   return {
     type: RECEIVE_REPOS,
-    lastUpdated,
-    errorMessage,
-    repos
+    res
   };
 }
 
@@ -58,18 +48,17 @@ function fetchRepos(user) {
   }
 }
 
-function shouldFetchRepos(state, user) {
-  const data = state.getReposByUser(user);
-  if (data.isFetching) {
+function shouldFetchRepos(state) {
+  if (state.isFetching) {
     return false;
   } else {
-    return data.didInvalidate;
+    return state.didInvalidate;
   }
 }
 
 export function fetchReposIfNeeded(user) {
   return (dispatch, getState) => {
-    if (shouldFetchRepos(getState(), user)) {
+    if (shouldFetchRepos(getState())) {
       return dispatch(fetchRepos(user));
     } else {
       return null;

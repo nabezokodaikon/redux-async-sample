@@ -15,7 +15,7 @@ function inputedUser(state = "", action) {
   }
 }
 
-function getReposByUser(state = {
+function repos(state = {
   isFetching: false,
   didInvalidate: false,
   lastUpdated: "",
@@ -33,12 +33,20 @@ function getReposByUser(state = {
         didInvalidate: true
       });
     case RECEIVE_REPOS:
+      const lastUpdated = new Date(Date.now()).toLocaleTimeString();
+      const errorMessage = (action.res.err !== null) ? action.res.err.message : "";
+      const repos = action.res.data.items.map(a => {
+        return {
+          name: a.name,
+          url: a.html_url
+        }; 
+      });
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        lastUpdated: action.lastUpdated,
-        errorMessage: action.errorMessage,
-        repos: action.repos
+        lastUpdated,
+        errorMessage,
+        repos
       });
     default:
       return state;
