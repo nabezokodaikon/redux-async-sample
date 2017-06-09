@@ -3,6 +3,8 @@ import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 module.exports = {
+  target: "web",
+
   entry: {
     main: "./src/main/index.js",
     sub: "./src/sub/index.js"
