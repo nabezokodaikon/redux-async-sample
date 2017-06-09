@@ -1,9 +1,12 @@
 # Design
-
 ## GitHub API
+### Command
 ```
 $ curl https://api.github.com/users/nabezokodaikon/repos
+```
 
+### Sucess
+```
 [
   {
     "id": 61000608,
@@ -18,13 +21,22 @@ $ curl https://api.github.com/users/nabezokodaikon/repos
 ]
 ```
 
+### Failed
+```
+{
+  "message": "Not Found",
+  "documentation_url": "https://developer.github.com/v3"
+}
+```
+
+
 ## State Shape
 ```
 {
-  lastUpdated: 1439478405547 // new Date(lastUpdated).toLocaleTimeString()
+  lastUpdated: 1439478405547  // new Date(lastUpdated).toLocaleTimeString()
   isFetching: false,
-  didInvalidate: false,
-  items: [
+  errorMessage: "Not Found",  // Error only.
+  items: [                    // Sucess only.
     {
       "id": 61000608,
       "name": "1password-docker",
