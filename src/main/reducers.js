@@ -8,7 +8,7 @@ import {
 
 function inputedUser(state = "", action) {
   switch (action.type) {
-    case: INPUT_USER:
+    case INPUT_USER:
       return action.user;
     default:
       return state;
