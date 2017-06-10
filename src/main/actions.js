@@ -1,4 +1,4 @@
-import github from "octonode";
+import GitHub from "github-api";
 import {
   INPUT_USER,
   REQUEST_REPOS,
@@ -35,9 +35,9 @@ function receiveRepos(res) {
 function fetchRepos(user) {
   return dispatch => {
     dispatch(requestRepos());
-    const client = github.client();
-    const search = client.search();
-    search.repos({
+    const gh = new GitHub();
+    const search = gh.search();
+    search.forRepositories({
       q: `user:${user}`,
       sort: "created",
       order: "asc"

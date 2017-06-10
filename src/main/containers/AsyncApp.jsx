@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   inputUser,
-  invalidateResult
+  invalidateResult,
   fetchReposIfNeeded
 } from "../actions";
 import SearchBar from "../components/SearchBar";
@@ -30,7 +30,7 @@ class AsyncApp extends React.Component {
         <p>
           {
             (this.props.lastUpdated !== "") &&
-              Last updated at {this.props.lastUpdated}
+              `Last updated at ${this.props.lastUpdated}.`
           }
         </p>
         <p>

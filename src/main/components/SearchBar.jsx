@@ -21,7 +21,7 @@ export default class SearchBar extends React.Component {
       <input
         type="text"
         onKeyPress={this.handleChange}
-      >
+      />
     );
   }
 }

@@ -15,8 +15,8 @@ export default class RepoList extends React.Component {
               <li key={i}>
                 <a href={repo.url}>{repo.name}</a>
               </li>
-            )<li>
-          });
+            );
+          })
         }
       </ul>
     );
