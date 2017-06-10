@@ -53,7 +53,9 @@ function repos(state = {
   }
 }
 
-export default rootReducer = combineReducers({
+const rootReducer = combineReducers({
   inputedUser,
-  getReposByUser
+  repos
 });
+
+export default rootReducer;
