@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
-  inputUser,
-  invalidateResult,
   fetchReposIfNeeded
 } from "../actions";
 import SearchBar from "../components/SearchBar";
@@ -16,8 +14,6 @@ class AsyncApp extends React.Component {
   }
 
   handleSearch(user) {
-    this.props.dispatch(inputUser(user));
-    this.props.dispatch(invalidateResult);
     this.props.dispatch(fetchReposIfNeeded(user));
   }
 
@@ -33,22 +29,20 @@ class AsyncApp extends React.Component {
               `Last updated at ${this.props.lastUpdated}.`
           }
         </p>
-        <p>
-          {
-            (this.props.isFetching && this.props.repos.length === 0) &&
-              <h2>Loading...</h2>
-          }
-          {
-            (!this.props.isFetching && this.props.repos.length === 0) &&
-              <h2>Empty</h2>
-          }
-          {
-            (this.props.repos.length > 0) &&
-              <div style={{opacity: isFetching ? 0.5 : 1}}>
-                <RepoList repos={this.props.repos} />
-              </div>
-          }
-        </p>
+        {
+          (this.props.isFetching && this.props.repos.length === 0) &&
+            <h2>Loading...</h2>
+        }
+        {
+          (!this.props.isFetching && this.props.repos.length === 0) &&
+            <h2>Empty</h2>
+        }
+        {
+          (this.props.repos.length > 0) &&
+            <div style={{opacity: this.props.isFetching ? 0.5 : 1}}>
+              <RepoList repos={this.props.repos} />
+            </div>
+        }
       </div>
     );
   }

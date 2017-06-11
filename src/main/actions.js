@@ -1,23 +1,8 @@
 import GitHub from "github-api";
 import {
-  INPUT_USER,
   REQUEST_REPOS,
-  RECEIVE_REPOS,
-  INVALIDATE_RESULT
+  RECEIVE_REPOS
 } from "./actionTypes";
-
-export function inputUser(user) {
-  return {
-    type: INPUT_USER,
-    user: user
-  };
-}
-
-export function invalidateResult() {
-  return {
-    type: INVALIDATE_RESULT
-  };
-}
 
 function requestRepos() {
   return {
@@ -41,8 +26,8 @@ function fetchRepos(user) {
       q: `user:${user}`,
       sort: "created",
       order: "asc"
-    }, (err, data, headers) => {
-      const res = { err, data };
+    }, (error, result, request) => {
+      const res = { error, repos: result };
       dispatch(receiveRepos(res));
     });
   }
@@ -52,7 +37,7 @@ function shouldFetchRepos(state) {
   if (state.isFetching) {
     return false;
   } else {
-    return state.didInvalidate;
+    return true;
   }
 }
 

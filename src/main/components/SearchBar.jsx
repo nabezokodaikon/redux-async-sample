@@ -8,7 +8,7 @@ export default class SearchBar extends React.Component {
   }
 
   handleChange(e) {
-    if (e.code !== "Enter") {
+    if (e.key !== "Enter") {
       return;
     }
 
